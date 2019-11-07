@@ -19,9 +19,11 @@ public class Program {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
 		EntityManager em = emf.createEntityManager();
 		
-		Pessoa p = em.find(Pessoa.class, 15);		
+		Pessoa p = em.find(Pessoa.class, 14);		
 		
-		System.out.println(p);
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
 		
 		
 		System.out.println("OK!");
